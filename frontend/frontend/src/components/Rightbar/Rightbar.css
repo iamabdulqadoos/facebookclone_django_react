@@ -1,0 +1,49 @@
+.rightbar {
+    flex: 3;
+    padding: 20px;
+    background: #f0f2f5;
+    position: sticky;
+    top: 65px;
+    height: calc(100vh - 65px);
+    overflow-y: auto;
+}
+
+.rightbar h3 {
+    color: #65676b;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.contact:hover {
+    background: #e4e6eb;
+}
+
+.contact-image {
+    position: relative;
+}
+
+.contact img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+.online {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 10px;
+    height: 10px;
+    background: #31a24c;
+    border-radius: 50%;
+    border: 2px solid white;
+}

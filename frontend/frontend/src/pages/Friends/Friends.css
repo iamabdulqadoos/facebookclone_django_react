@@ -1,0 +1,79 @@
+.friends-page{
+
+    width:900px;
+    margin:40px auto;
+
+}
+
+
+.friends-page h2{
+
+    margin-bottom:20px;
+
+}
+
+
+
+.friends-container{
+
+    display:grid;
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+
+
+.friend-card{
+
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+
+}
+
+
+
+.friend-card img{
+
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+
+}
+
+
+
+.friend-card h3{
+
+    margin:15px 0;
+
+}
+
+
+
+.friend-card button{
+
+    border:none;
+    padding:10px 15px;
+    background:#e4e6eb;
+    border-radius:8px;
+    cursor:pointer;
+
+}
+
+
+
+.empty{
+
+    background:white;
+    padding:40px;
+    text-align:center;
+    border-radius:12px;
+
+}

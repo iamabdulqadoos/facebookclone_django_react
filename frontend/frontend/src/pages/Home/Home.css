@@ -1,0 +1,109 @@
+/* ===========================
+   Global
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#f0f2f5;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+
+/* ===========================
+   Home Layout
+=========================== */
+
+.home{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+    gap:20px;
+
+    width:100%;
+    max-width:1600px;
+
+    margin:0 auto;
+
+    padding-left:20px;
+    padding-right:20px;
+    padding-bottom:20px;
+
+    /* Space for Fixed Navbar */
+    padding-top:78px;
+
+}
+
+
+/* ===========================
+   Left Sidebar
+=========================== */
+
+.left-sidebar{
+
+    width:280px;
+    position:sticky;
+    top:90px;
+
+    height:calc(100vh - 90px);
+
+    overflow-y:auto;
+
+}
+
+
+/* ===========================
+   Feed
+=========================== */
+
+.feed{
+
+    flex:1;
+
+    max-width:680px;
+
+}
+
+
+/* ===========================
+   Right Sidebar
+=========================== */
+
+.right-sidebar{
+
+    width:320px;
+
+    position:sticky;
+    top:90px;
+
+    height:calc(100vh - 90px);
+
+    overflow-y:auto;
+
+}
+
+
+/* ===========================
+   Scrollbar
+=========================== */
+
+.left-sidebar::-webkit-scrollbar,
+.right-sidebar::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.left-sidebar::-webkit-scrollbar-thumb,
+.right-sidebar::-webkit-scrollbar-thumb{
+
+    background:#c7c7c7;
+    border-radius:20px;
+
+}

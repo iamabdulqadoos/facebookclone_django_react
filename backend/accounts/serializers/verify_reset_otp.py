@@ -1,0 +1,48 @@
+from django.utils import timezone
+
+from rest_framework import serializers
+
+from accounts.models import User, OTP
+
+
+class VerifyResetOTPSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    code = serializers.CharField(max_length=6)
+
+    def validate(self, attrs):
+        email = attrs.get("email")
+        code = attrs.get("code")
+
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            raise serializers.ValidationError(
+                "User not found."
+            )
+
+        try:
+            otp = OTP.objects.filter(
+                user=user,
+                purpose=OTP.RESET_PASSWORD,
+                is_used=False,
+            ).latest("created_at")
+
+        except OTP.DoesNotExist:
+            raise serializers.ValidationError(
+                "OTP not found."
+            )
+
+        if otp.expires_at < timezone.now():
+            raise serializers.ValidationError(
+                "OTP has expired."
+            )
+
+        if otp.code != code:
+            raise serializers.ValidationError(
+                "Invalid OTP."
+            )
+
+        attrs["otp"] = otp
+        attrs["user"] = user
+
+        return attrs

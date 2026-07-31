@@ -1,0 +1,29 @@
+.stories{
+    display:flex;
+    gap:12px;
+    margin-bottom:20px;
+    overflow-x:auto;
+}
+
+.story-card{
+    min-width:120px;
+    height:210px;
+    border-radius:12px;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.story-card:hover{
+    transform:scale(1.04);
+}
+
+.story-name{
+    position:absolute;
+    bottom:10px;
+    left:10px;
+    color:white;
+    font-weight:bold;
+}

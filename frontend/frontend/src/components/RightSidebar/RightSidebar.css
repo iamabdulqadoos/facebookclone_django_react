@@ -1,0 +1,50 @@
+.right-sidebar{
+    width:25%;
+    position:sticky;
+    top:80px;
+    height:fit-content;
+}
+
+.birthday-card,
+.sponsored-card,
+.contacts-card{
+    background:#fff;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.sponsored-card img{
+    width:100%;
+    border-radius:10px;
+    margin:10px 0;
+}
+
+.contact{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 0;
+}
+
+.contact-image{
+    position:relative;
+}
+
+.contact img{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+}
+
+.online{
+    position:absolute;
+    bottom:2px;
+    right:2px;
+    width:10px;
+    height:10px;
+    background:#31a24c;
+    border:2px solid white;
+    border-radius:50%;
+}

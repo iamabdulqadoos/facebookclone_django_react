@@ -1,0 +1,54 @@
+frontend/
+│
+├── src/
+│   │
+│   ├── components/
+│   │   │
+│   │   ├── Navbar/
+│   │   │   ├── Navbar.jsx
+│   │   │   └── Navbar.css
+│   │   │
+│   │   ├── Sidebar/
+│   │   │   ├── LeftSidebar.jsx
+│   │   │   ├── LeftSidebar.css
+│   │   │   ├── RightSidebar.jsx
+│   │   │   └── RightSidebar.css
+│   │   │
+│   │   ├── Stories/
+│   │   │   ├── Stories.jsx
+│   │   │   └── Stories.css
+│   │   │
+│   │   ├── CreatePost/
+│   │   │   ├── CreatePost.jsx
+│   │   │   └── CreatePost.css
+│   │   │
+│   │   ├── Post/
+│   │   │   ├── PostCard.jsx
+│   │   │   └── PostCard.css
+│   │   │
+│   │   └── Common/
+│   │       ├── Button.jsx
+│   │       ├── Input.jsx
+│   │       ├── Loader.jsx
+│   │       └── Modal.jsx
+│   │
+│   ├── pages/
+│   │   ├── Home/
+│   │   ├── Login/
+│   │   ├── Register/
+│   │   ├── Profile/
+│   │   └── Friends/
+│   │
+│   ├── layouts/
+│   │   └── MainLayout.jsx
+│   │
+│   ├── services/
+│   ├── context/
+│   ├── hooks/
+│   ├── utils/
+│   │
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── package.json
+└── vite.config.js

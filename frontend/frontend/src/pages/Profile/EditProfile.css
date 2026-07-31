@@ -1,0 +1,271 @@
+/* Dark Background */
+
+.modal-overlay{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.55);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+
+/* Modal */
+
+.edit-modal{
+
+    width:650px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:white;
+
+    border-radius:12px;
+
+    padding:30px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+    animation:popup .25s ease;
+
+}
+
+
+/* Animation */
+
+@keyframes popup{
+
+    from{
+
+        transform:scale(.9);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* Title */
+
+.edit-modal h2{
+
+    text-align:center;
+
+    color:#1877f2;
+
+    margin-bottom:25px;
+
+}
+
+
+/* Form */
+
+.edit-modal form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+
+/* Inputs */
+
+.edit-modal input,
+
+.edit-modal textarea,
+
+.edit-modal select{
+
+    width:100%;
+
+    padding:13px;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+    box-sizing:border-box;
+
+    transition:.2s;
+
+}
+
+
+/* Focus */
+
+.edit-modal input:focus,
+
+.edit-modal textarea:focus,
+
+.edit-modal select:focus{
+
+    outline:none;
+
+    border-color:#1877f2;
+
+    box-shadow:0 0 0 3px rgba(24,119,242,.2);
+
+}
+
+
+/* Textarea */
+
+.edit-modal textarea{
+
+    resize:none;
+
+}
+
+
+/* Buttons */
+
+.modal-buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+    margin-top:10px;
+
+}
+
+
+/* Cancel */
+
+.cancel-btn{
+
+    background:#e4e6eb;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.2s;
+
+}
+
+.cancel-btn:hover{
+
+    background:#d8dadf;
+
+}
+
+
+/* Save */
+
+.save-btn{
+
+    background:#1877f2;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.2s;
+
+}
+
+.save-btn:hover{
+
+    background:#166fe5;
+
+}
+
+.save-btn:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+
+/* Error */
+
+.error-message{
+
+    background:#ffe5e5;
+
+    color:#d93025;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    text-align:center;
+
+}
+
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.edit-modal{
+
+    width:95%;
+
+    padding:20px;
+
+}
+
+.modal-buttons{
+
+    flex-direction:column;
+
+}
+
+.cancel-btn,
+
+.save-btn{
+
+    width:100%;
+
+}
+
+}
