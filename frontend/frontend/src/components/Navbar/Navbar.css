@@ -1,6 +1,6 @@
-/* ==========================
+/* ==========================================
    NAVBAR
-========================== */
+========================================== */
 
 .navbar{
 
@@ -15,7 +15,9 @@
     background:#ffffff;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     padding:0 16px;
@@ -26,64 +28,94 @@
 
 }
 
-
-/* ==========================
+/* ==========================================
    LEFT
-========================== */
+========================================== */
 
 .navbar-left{
 
     display:flex;
+
     align-items:center;
+
     gap:12px;
 
+    min-width:320px;
+
 }
+
+/* Facebook Logo */
 
 .facebook-logo{
 
     width:42px;
+
     height:42px;
 
     border-radius:50%;
 
     background:#1877f2;
 
-    color:#fff;
+    color:#ffffff;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
-    font-size:38px;
-    font-weight:bold;
+    font-size:40px;
 
     text-decoration:none;
 
+    transition:.25s;
+
 }
 
-.search-container{
+.facebook-logo:hover{
 
-    display:flex;
-    align-items:center;
+    transform:scale(1.05);
 
-    width:250px;
+}
+
+/* ==========================================
+   SEARCH
+========================================== */
+
+.search-box{
+
+    width:260px;
+
     height:40px;
 
     background:#f0f2f5;
 
-    border-radius:999px;
+    border-radius:50px;
+
+    display:flex;
+
+    align-items:center;
 
     padding:0 15px;
 
-    gap:10px;
+    gap:12px;
 
 }
 
-.search-container input{
+.search-icon{
+
+    color:#65676b;
+
+    font-size:15px;
+
+}
+
+.search-box input{
 
     flex:1;
 
     border:none;
+
     outline:none;
 
     background:transparent;
@@ -92,15 +124,26 @@
 
 }
 
+.search-box input::placeholder{
 
-/* ==========================
+    color:#65676b;
+
+}
+/* ==========================================
    CENTER
-========================== */
+========================================== */
 
 .navbar-center{
 
     display:flex;
+
     align-items:center;
+
+    justify-content:center;
+
+    flex:1;
+
+    max-width:650px;
 
     gap:8px;
 
@@ -109,11 +152,16 @@
 .nav-item{
 
     width:110px;
+
     height:56px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
+    color:#65676b;
 
     text-decoration:none;
 
@@ -121,9 +169,9 @@
 
     border-radius:10px;
 
-    transition:.2s;
+    position:relative;
 
-    color:#65676b;
+    transition:all .25s ease;
 
 }
 
@@ -133,34 +181,80 @@
 
 }
 
+/* Active Page */
 
-/* ==========================
+.active-nav{
+
+    color:#1877f2;
+
+}
+
+.active-nav::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+
+    left:10px;
+
+    width:calc(100% - 20px);
+
+    height:3px;
+
+    background:#1877f2;
+
+    border-radius:20px;
+
+}
+
+
+/* ==========================================
    RIGHT
-========================== */
+========================================== */
 
 .navbar-right{
 
     display:flex;
+
     align-items:center;
 
     gap:10px;
 
 }
 
+/* Circle Buttons */
+
 .circle-btn{
 
-    width:40px;
-    height:40px;
+    width:42px;
 
-    border:none;
+    height:42px;
 
     border-radius:50%;
 
+    border:none;
+
     background:#e4e6eb;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#050505;
+
+    font-size:20px;
 
     cursor:pointer;
 
-    font-size:18px;
+    position:relative;
+
+    transition:all .25s ease;
+
+    text-decoration:none;
 
 }
 
@@ -168,20 +262,51 @@
 
     background:#d8dadf;
 
-}
-
-.profile-image{
-
-    width:40px;
-    height:40px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-    cursor:pointer;
+    transform:scale(1.05);
 
 }
+
+
+/* ==========================================
+   BADGES
+========================================== */
+
+.badge{
+
+    position:absolute;
+
+    top:-5px;
+
+    right:-4px;
+
+    min-width:20px;
+
+    height:20px;
+
+    padding:0 6px;
+
+    border-radius:50px;
+
+    background:#e41e3f;
+
+    color:#ffffff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    border:2px solid #ffffff;
+
+}
+/* ==========================================
+   PROFILE
+========================================== */
 
 .profile-menu{
 
@@ -189,53 +314,284 @@
 
 }
 
+.profile-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    border:none;
+
+    background:transparent;
+
+    cursor:pointer;
+
+    padding:5px 10px;
+
+    border-radius:30px;
+
+    transition:all .25s ease;
+
+}
+
+.profile-btn:hover{
+
+    background:#f0f2f5;
+
+}
+
+.profile-image{
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:2px solid #e4e6eb;
+
+}
+
+.profile-placeholder{
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+    background:#1877f2;
+
+    color:#ffffff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+}
+
+.profile-name{
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#050505;
+
+}
+
+.dropdown-icon{
+
+    font-size:12px;
+
+    color:#65676b;
+
+}
+
+
+/* ==========================================
+   DROPDOWN
+========================================== */
+
 .dropdown{
 
     position:absolute;
 
-    top:52px;
+    top:60px;
+
     right:0;
 
-    width:200px;
+    width:280px;
 
-    background:#fff;
+    background:#ffffff;
 
-    border-radius:10px;
+    border-radius:12px;
 
-    box-shadow:0 5px 20px rgba(0,0,0,.15);
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
 
     overflow:hidden;
 
+    animation:dropdown .2s ease;
+
+    z-index:10000;
+
 }
 
-.dropdown a,
-.dropdown button{
+@keyframes dropdown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.dropdown-item{
 
     width:100%;
 
-    display:block;
+    display:flex;
 
-    padding:12px 16px;
+    align-items:center;
 
-    border:none;
+    gap:15px;
 
-    background:none;
-
-    text-align:left;
-
-    cursor:pointer;
-
-    color:#050505;
+    padding:15px 18px;
 
     text-decoration:none;
 
+    color:#050505;
+
     font-size:15px;
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    transition:all .2s ease;
 
 }
 
-.dropdown a:hover,
-.dropdown button:hover{
+.dropdown-item:hover{
 
-    background:#f2f2f2;
+    background:#f0f2f5;
+
+}
+
+.logout-btn{
+
+    color:#d93025;
+
+}
+
+.dropdown hr{
+
+    border:none;
+
+    border-top:1px solid #e4e6eb;
+
+    margin:5px 0;
+
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:1200px){
+
+    .search-box{
+
+        width:200px;
+
+    }
+
+    .profile-name{
+
+        display:none;
+
+    }
+
+}
+
+@media (max-width:992px){
+
+    .navbar-center{
+
+        gap:0;
+
+    }
+
+    .nav-item{
+
+        width:80px;
+
+    }
+
+    .search-box{
+
+        width:180px;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .search-box{
+
+        display:none;
+
+    }
+
+    .navbar-left{
+
+        min-width:auto;
+
+    }
+
+    .nav-item{
+
+        width:60px;
+
+        font-size:20px;
+
+    }
+
+    .circle-btn{
+
+        width:38px;
+
+        height:38px;
+
+        font-size:18px;
+
+    }
+
+}
+
+@media (max-width:576px){
+
+    .navbar{
+
+        padding:0 10px;
+
+    }
+
+    .navbar-center{
+
+        display:none;
+
+    }
+
+    .dropdown{
+
+        width:240px;
+
+    }
 
 }

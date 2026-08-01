@@ -1,19 +1,78 @@
 import "./Navbar.css";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
+import { getProfile } from "../../services/profileService";
+
+import {
+    FaFacebook,
+    FaHome,
+    FaUserFriends,
+    FaUsers,
+    FaBell,
+    FaFacebookMessenger,
+    FaSearch,
+    FaChevronDown,
+    FaUserCircle,
+    FaCog,
+    FaMoon,
+    FaSignOutAlt,
+} from "react-icons/fa";
 
 export default function Navbar() {
 
     const navigate = useNavigate();
 
+    const [profile, setProfile] = useState(null);
+
     const [menuOpen, setMenuOpen] = useState(false);
+
+    const [mobileMenu, setMobileMenu] = useState(false);
+
+    const [search, setSearch] = useState("");
+
+    const [notificationCount] = useState(3);
+
+    const [messageCount] = useState(2);
+
+    useEffect(() => {
+
+        loadProfile();
+
+    }, []);
+
+    const loadProfile = async () => {
+
+        try {
+
+            const data = await getProfile();
+
+            setProfile(data);
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+        }
+
+    };
 
     const handleLogout = () => {
 
         localStorage.removeItem("access");
+
         localStorage.removeItem("refresh");
 
         navigate("/login");
+
+    };
+
+    const handleSearch = (e) => {
+
+        setSearch(e.target.value);
 
     };
 
@@ -21,9 +80,9 @@ export default function Navbar() {
 
         <nav className="navbar">
 
-            {/* ==========================
-                LEFT SECTION
-            ========================== */}
+            {/* ===========================
+                    LEFT
+            =========================== */}
 
             <div className="navbar-left">
 
@@ -31,69 +90,108 @@ export default function Navbar() {
                     to="/home"
                     className="facebook-logo"
                 >
-                    f
+
+                    <FaFacebook />
+
                 </Link>
 
-                <div className="search-container">
+                <div className="search-box">
 
-                    <span>🔍</span>
+                    <FaSearch className="search-icon" />
 
                     <input
                         type="text"
                         placeholder="Search Facebook"
+                        value={search}
+                        onChange={handleSearch}
                     />
 
                 </div>
 
             </div>
+                        {/* ===========================
+                    CENTER
+            =========================== */}
 
+            <div
+                className={
+                    mobileMenu
+                        ? "navbar-center active"
+                        : "navbar-center"
+                }
+            >
 
+                {/* Home */}
 
-            {/* ==========================
-                CENTER SECTION
-            ========================== */}
-
-            <div className="navbar-center">
-
-                <Link
+                <NavLink
                     to="/home"
-                    className="nav-item"
+                    className={({ isActive }) =>
+                        isActive
+                            ? "nav-item active-nav"
+                            : "nav-item"
+                    }
                     title="Home"
                 >
-                    🏠
-                </Link>
 
-                <Link
+                    <FaHome />
+
+                </NavLink>
+
+                {/* Friends */}
+
+                <NavLink
                     to="/friends"
-                    className="nav-item"
+                    className={({ isActive }) =>
+                        isActive
+                            ? "nav-item active-nav"
+                            : "nav-item"
+                    }
                     title="Friends"
                 >
-                    👥
-                </Link>
 
-                <Link
+                    <FaUserFriends />
+
+                </NavLink>
+
+                {/* Find Friends */}
+
+                <NavLink
                     to="/people"
-                    className="nav-item"
+                    className={({ isActive }) =>
+                        isActive
+                            ? "nav-item active-nav"
+                            : "nav-item"
+                    }
                     title="Find Friends"
                 >
-                    ➕
-                </Link>
 
-                <Link
+                    <FaUsers />
+
+                </NavLink>
+
+                {/* Friend Requests */}
+
+                <NavLink
                     to="/friend-requests"
-                    className="nav-item"
+                    className={({ isActive }) =>
+                        isActive
+                            ? "nav-item active-nav"
+                            : "nav-item"
+                    }
                     title="Friend Requests"
                 >
+
                     🤝
-                </Link>
+
+                </NavLink>
 
             </div>
 
 
 
-            {/* ==========================
-                RIGHT SECTION
-            ========================== */}
+            {/* ===========================
+                    RIGHT
+            =========================== */}
 
             <div className="navbar-right">
 
@@ -103,8 +201,25 @@ export default function Navbar() {
                     className="circle-btn"
                     title="Messenger"
                 >
-                    💬
+
+                    <FaFacebookMessenger />
+
+                    {
+
+                        messageCount > 0 && (
+
+                            <span className="badge">
+
+                                {messageCount}
+
+                            </span>
+
+                        )
+
+                    }
+
                 </button>
+
 
 
                 {/* Notifications */}
@@ -114,22 +229,72 @@ export default function Navbar() {
                     className="circle-btn"
                     title="Notifications"
                 >
-                    🔔
+
+                    <FaBell />
+
+                    {
+
+                        notificationCount > 0 && (
+
+                            <span className="badge">
+
+                                {notificationCount}
+
+                            </span>
+
+                        )
+
+                    }
+
                 </Link>
+                                {/* Profile */}
 
+                <div className="profile-menu">
 
-                {/* Profile */}
+                    <button
+                        className="profile-btn"
+                        onClick={() =>
+                            setMenuOpen(!menuOpen)
+                        }
+                    >
 
-                <div
-                    className="profile-menu"
-                    onClick={() => setMenuOpen(!menuOpen)}
-                >
+                        {
 
-                    <img
-                        src="/profile.jpg"
-                        alt="Profile"
-                        className="profile-image"
-                    />
+                            profile?.profile_picture ? (
+
+                                <img
+                                    src={profile.profile_picture}
+                                    alt="Profile"
+                                    className="profile-image"
+                                />
+
+                            ) : (
+
+                                <div className="profile-placeholder">
+
+                                    {
+                                        profile?.username
+                                            ? profile.username[0].toUpperCase()
+                                            : "U"
+                                    }
+
+                                </div>
+
+                            )
+
+                        }
+
+                        <span className="profile-name">
+
+                            {profile?.username || "User"}
+
+                        </span>
+
+                        <FaChevronDown
+                            className="dropdown-icon"
+                        />
+
+                    </button>
 
                     {
 
@@ -137,14 +302,65 @@ export default function Navbar() {
 
                             <div className="dropdown">
 
-                                <Link to="/profile">
-                                    Profile
+                                <Link
+                                    to="/profile"
+                                    className="dropdown-item"
+                                >
+
+                                    <FaUserCircle />
+
+                                    <span>
+
+                                        My Profile
+
+                                    </span>
+
+                                </Link>
+
+                                <Link
+                                    to="/settings"
+                                    className="dropdown-item"
+                                >
+
+                                    <FaCog />
+
+                                    <span>
+
+                                        Settings
+
+                                    </span>
+
                                 </Link>
 
                                 <button
+                                    className="dropdown-item"
+                                >
+
+                                    <FaMoon />
+
+                                    <span>
+
+                                        Dark Mode
+
+                                    </span>
+
+                                </button>
+
+                                <hr />
+
+                                <button
+                                    className="dropdown-item logout-btn"
                                     onClick={handleLogout}
                                 >
-                                    Logout
+
+                                    <FaSignOutAlt />
+
+                                    <span>
+
+                                        Logout
+
+                                    </span>
+
                                 </button>
 
                             </div>
