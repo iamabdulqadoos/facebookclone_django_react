@@ -16,6 +16,8 @@ import Notification from "../pages/Notification/Notification";
 
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import MainLayout from "../components/Layout/MainLayout";
+import Settings from "../pages/Settings/Settings";
+import PostDetail from "../pages/PostDetail/PostDetail";
 
 function AppRoutes() {
 
@@ -98,6 +100,13 @@ function AppRoutes() {
                 <Route
                     path="/notifications"
                     element={<Notification />}
+                />
+                <Route path="/settings" 
+                element={<Settings />} 
+                />
+                <Route
+                path="/post/:id"
+                element={<PostDetail />}
                 />
 
             </Route>

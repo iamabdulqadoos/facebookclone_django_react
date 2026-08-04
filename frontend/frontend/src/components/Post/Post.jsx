@@ -2,209 +2,155 @@ import "./Post.css";
 import { useState } from "react";
 
 import CommentSection from "../Comments/CommentSection";
-
-import {
-    sharePost,
-    unsharePost,
-} from "../../services/postService";
+import ShareModal from "../ShareModal/ShareModal";
 
 export default function Post({ post, onLike }) {
-
     const [commentsCount, setCommentsCount] = useState(
-        post.comments_count
-    );
-
-    const [sharesCount, setSharesCount] = useState(
-        post.share_count
-    );
-
-    // This will work once we add is_shared to the backend serializer.
-    const [shared, setShared] = useState(
-        post.is_shared || false
+        post.comments_count || 0
     );
 
     const [showComments, setShowComments] = useState(false);
 
-    const handleShare = async () => {
-
-        try {
-
-            if (shared) {
-
-                await unsharePost(post.id);
-
-                setShared(false);
-
-                setSharesCount((previous) =>
-                    Math.max(previous - 1, 0)
-                );
-
-            } else {
-
-                await sharePost(post.id);
-
-                setShared(true);
-
-                setSharesCount((previous) => previous + 1);
-
-            }
-
-        } catch (error) {
-
-            console.error("Share Error:", error);
-
-        }
-
-    };
+    const [showShareModal, setShowShareModal] = useState(false);
 
     return (
+        <>
+            <div className="post">
+                {/* ========================= */}
+                {/* Header */}
+                {/* ========================= */}
 
-        <div className="post">
+                <div className="post-header">
+                    {post.profile_picture ? (
+                        <img
+                            src={post.profile_picture}
+                            alt={post.username}
+                            className="profile-img"
+                        />
+                    ) : (
+                        <div className="profile-placeholder">
+                            {post.username[0].toUpperCase()}
+                        </div>
+                    )}
 
-            {/* Header */}
+                    <div>
+                        <h4>{post.username}</h4>
 
-            <div className="post-header">
-
-                {post.profile_picture ? (
-
-                    <img
-                        src={post.profile_picture}
-                        alt={post.username}
-                        className="profile-img"
-                    />
-
-                ) : (
-
-                    <div className="profile-placeholder">
-
-                        {post.username[0].toUpperCase()}
-
+                        <small>
+                            {new Date(post.created_at).toLocaleString()}
+                        </small>
                     </div>
+                </div>
 
+                {/* ========================= */}
+                {/* Content */}
+                {/* ========================= */}
+
+                {post.content && (
+                    <div className="post-content">
+                        <p>{post.content}</p>
+                    </div>
                 )}
 
-                <div>
+                {/* ========================= */}
+                {/* Image */}
+                {/* ========================= */}
 
-                    <h4>{post.username}</h4>
+                {post.image && (
+                    <img
+                        src={post.image}
+                        alt="Post"
+                        className="post-image"
+                    />
+                )}
 
-                    <small>
+                {/* ========================= */}
+                {/* Statistics */}
+                {/* ========================= */}
 
-                        {new Date(post.created_at).toLocaleString()}
+                <div className="post-stats">
+                    <div className="likes-count">
+                        ❤️ {post.likes_count}
+                    </div>
 
-                    </small>
+                    <div className="post-meta">
+                        <span>{commentsCount} Comments</span>
 
+                        <span>
+                            {post.share_count || 0} Shares
+                        </span>
+                    </div>
                 </div>
 
+                <hr />
+
+                {/* ========================= */}
+                {/* Facebook Action Buttons */}
+                {/* ========================= */}
+
+                <div className="post-actions">
+                    {/* Like */}
+
+                    <button
+                        className={
+                            post.is_liked
+                                ? "action-btn liked"
+                                : "action-btn"
+                        }
+                        onClick={() => onLike(post.id)}
+                    >
+                        👍 Like
+                    </button>
+
+                    {/* Comment */}
+
+                    <button
+                        className="action-btn"
+                        onClick={() =>
+                            setShowComments(!showComments)
+                        }
+                    >
+                        💬 Comment
+                    </button>
+
+                    {/* Share */}
+
+                    <button
+                        className="action-btn"
+                        onClick={() =>
+                            setShowShareModal(true)
+                        }
+                    >
+                        ↗️ Share
+                    </button>
+                </div>
+
+                {/* ========================= */}
+                {/* Comments */}
+                {/* ========================= */}
+
+                {showComments && (
+                    <CommentSection
+                        postId={post.id}
+                        setCommentsCount={
+                            setCommentsCount
+                        }
+                    />
+                )}
             </div>
 
-            {/* Content */}
+            {/* ========================= */}
+            {/* Share Modal */}
+            {/* ========================= */}
 
-            {post.content && (
-
-                <div className="post-content">
-
-                    <p>{post.content}</p>
-
-                </div>
-
-            )}
-
-            {/* Image */}
-
-            {post.image && (
-
-                <img
-                    src={post.image}
-                    alt="Post"
-                    className="post-image"
-                />
-
-            )}
-
-            {/* Statistics */}
-
-            <div className="post-stats">
-
-                <div className="likes-count">
-
-                    ❤️ {post.likes_count}
-
-                </div>
-
-                <div className="post-meta">
-
-                    <span>{commentsCount} Comments</span>
-
-                    <span>{sharesCount} Shares</span>
-
-                </div>
-
-            </div>
-
-            <hr />
-
-            {/* Facebook Action Bar */}
-
-            <div className="post-actions">
-
-                {/* Like */}
-
-                <button
-                    className={
-                        post.is_liked
-                            ? "action-btn liked"
-                            : "action-btn"
-                    }
-                    onClick={() => onLike(post.id)}
-                >
-
-                    👍 Like
-
-                </button>
-
-                {/* Comment */}
-
-                <button
-                    className="action-btn"
-                    onClick={() =>
-                        setShowComments(!showComments)
-                    }
-                >
-
-                    💬 Comment
-
-                </button>
-
-                {/* Share */}
-
-                <button
-                    className={
-                        shared
-                            ? "action-btn liked"
-                            : "action-btn"
-                    }
-                    onClick={handleShare}
-                >
-
-                    {shared ? "↩️ Unshare" : "↗️ Share"}
-
-                </button>
-
-            </div>
-
-            {/* Comments */}
-
-            {showComments && (
-
-                <CommentSection
+            {showShareModal && (
+                <ShareModal
                     postId={post.id}
-                    setCommentsCount={setCommentsCount}
+                    onClose={() =>
+                        setShowShareModal(false)
+                    }
                 />
-
             )}
-
-        </div>
-
+        </>
     );
-
 }
