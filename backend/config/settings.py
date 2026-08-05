@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'posts',
     'friends',
     'notifications',
+    'templates',
 ]
 
 AUTH_USER_MODEL = "accounts.User"
@@ -70,7 +71,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        "DIRS": [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

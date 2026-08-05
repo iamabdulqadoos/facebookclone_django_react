@@ -1,9 +1,107 @@
+/* ==========================================
+   MAIN LAYOUT
+========================================== */
+
 .main-layout{
 
-    padding-top:70px;
+    padding-top:45px;
 
     min-height:100vh;
 
     background:#f0f2f5;
+
+    transition:background .3s ease;
+
+}
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+body.dark .main-layout{
+
+    background:#18191a;
+
+}
+
+/* ==========================================
+   LARGE LAPTOP
+========================================== */
+
+@media (max-width:1200px){
+
+.main-layout{
+
+    padding-top:68px;
+
+}
+
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width:992px){
+
+.main-layout{
+
+    padding-top:65px;
+
+}
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width:768px){
+
+.main-layout{
+
+    padding-top:60px;
+
+    padding-left:10px;
+
+    padding-right:10px;
+
+}
+
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width:576px){
+
+.main-layout{
+
+    padding-top:58px;
+
+    padding-left:8px;
+
+    padding-right:8px;
+
+}
+
+}
+
+/* ==========================================
+   EXTRA SMALL DEVICES
+========================================== */
+
+@media (max-width:400px){
+
+.main-layout{
+
+    padding-top:10px;
+
+    padding-left:5px;
+
+    padding-right:5px;
+
+}
 
 }

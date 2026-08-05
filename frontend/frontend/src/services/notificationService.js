@@ -1,16 +1,59 @@
 import api from "../api/axios";
 
-// Get all notifications
+// ==========================================
+// Get All Notifications
+// ==========================================
+
 export const getNotifications = async () => {
-    const response = await api.get("/notifications/");
+
+    const response = await api.get(
+        "/notifications/"
+    );
+
     return response.data;
+
 };
 
-// Mark notification as read
-export const markNotificationAsRead = async (notificationId) => {
+// ==========================================
+// Mark Single Notification Read
+// ==========================================
+
+export const markNotificationAsRead = async (
+    notificationId
+) => {
+
     const response = await api.post(
         `/notifications/read/${notificationId}/`
     );
 
     return response.data;
+
+};
+
+// ==========================================
+// Get Unread Notification Count
+// ==========================================
+
+export const getUnreadNotificationCount = async () => {
+
+    const response = await api.get(
+        "/notifications/unread-count/"
+    );
+
+    return response.data;
+
+};
+
+// ==========================================
+// Mark All Notifications Read
+// ==========================================
+
+export const markAllNotificationsRead = async () => {
+
+    const response = await api.post(
+        "/notifications/read-all/"
+    );
+
+    return response.data;
+
 };

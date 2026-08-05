@@ -1,49 +1,200 @@
-.rightbar {
-    flex: 3;
-    padding: 20px;
-    background: #f0f2f5;
-    position: sticky;
-    top: 65px;
-    height: calc(100vh - 65px);
-    overflow-y: auto;
+/* ==========================================
+   RIGHTBAR
+========================================== */
+
+.rightbar{
+
+    flex:3;
+
+    padding:20px;
+
+    background:var(--background);
+
+    position:sticky;
+
+    top:65px;
+
+    height:calc(100vh - 65px);
+
+    overflow-y:auto;
+
+    transition:
+        background .25s ease,
+        color .25s ease;
+
 }
 
-.rightbar h3 {
-    color: #65676b;
-    margin-bottom: 20px;
-    font-size: 18px;
+/* ==========================================
+   TITLE
+========================================== */
+
+.rightbar h3{
+
+    color:var(--text-secondary);
+
+    margin-bottom:20px;
+
+    font-size:18px;
+
 }
 
-.contact {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
+/* ==========================================
+   CONTACT
+========================================== */
+
+.contact{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
 }
 
-.contact:hover {
-    background: #e4e6eb;
+.contact:hover{
+
+    background:var(--surface-hover);
+
 }
 
-.contact-image {
-    position: relative;
+.contact-image{
+
+    position:relative;
+
 }
 
-.contact img {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
+.contact img{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
 }
 
-.online {
-    position: absolute;
-    bottom: 2px;
-    right: 2px;
-    width: 10px;
-    height: 10px;
-    background: #31a24c;
-    border-radius: 50%;
-    border: 2px solid white;
+.online{
+
+    position:absolute;
+
+    bottom:2px;
+
+    right:2px;
+
+    width:10px;
+
+    height:10px;
+
+    background:#31a24c;
+
+    border-radius:50%;
+
+    border:2px solid var(--surface);
+
+}
+
+.contact span{
+
+    color:var(--text);
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+/* ==========================================
+   CUSTOM SCROLLBAR
+========================================== */
+
+.rightbar::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.rightbar::-webkit-scrollbar-thumb{
+
+    background:var(--border);
+
+    border-radius:20px;
+
+}
+
+.rightbar::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:1200px){
+
+    .rightbar{
+
+        padding:15px;
+
+    }
+
+}
+
+@media (max-width:992px){
+
+    .rightbar{
+
+        display:none;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .rightbar{
+
+        display:none;
+
+    }
+
+}
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+body.dark .rightbar{
+
+    background:var(--background);
+
+}
+
+body.dark .contact:hover{
+
+    background:var(--surface-hover);
+
+}
+
+body.dark .online{
+
+    border-color:var(--surface);
+
+}
+
+body.dark .rightbar::-webkit-scrollbar-thumb{
+
+    background:var(--border);
+
 }

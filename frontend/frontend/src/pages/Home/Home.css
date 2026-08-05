@@ -1,22 +1,34 @@
-/* ===========================
-   Global
-=========================== */
+/* ==========================================
+   GLOBAL
+========================================== */
 
 *{
+
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
+
 }
 
 body{
-    background:#f0f2f5;
+
+    background:var(--background);
+
+    color:var(--text);
+
     font-family:Arial, Helvetica, sans-serif;
+
+    transition:
+        background .25s ease,
+        color .25s ease;
+
 }
 
-
-/* ===========================
-   Home Layout
-=========================== */
+/* ==========================================
+   HOME LAYOUT
+========================================== */
 
 .home{
 
@@ -34,66 +46,14 @@ body{
 
     margin:0 auto;
 
-    padding-left:20px;
+    padding:20px;
 
-    padding-right:20px;
-
-    padding-bottom:20px;
+    transition:all .25s ease;
 
 }
-
-
-/* ===========================
-   Left Sidebar
-=========================== */
-
-.left-sidebar{
-
-    width:280px;
-    position:sticky;
-    top:90px;
-
-    height:calc(100vh - 90px);
-
-    overflow-y:auto;
-
-}
-
-
-/* ===========================
-   Feed
-=========================== */
-
-.feed{
-
-    flex:1;
-
-    max-width:680px;
-
-}
-
-
-/* ===========================
-   Right Sidebar
-=========================== */
-
-.right-sidebar{
-
-    width:320px;
-
-    position:sticky;
-    top:90px;
-
-    height:calc(100vh - 90px);
-
-    overflow-y:auto;
-
-}
-
-
-/* ===========================
-   Scrollbar
-=========================== */
+/* ==========================================
+   CUSTOM SCROLLBAR
+========================================== */
 
 .left-sidebar::-webkit-scrollbar,
 .right-sidebar::-webkit-scrollbar{
@@ -105,7 +65,155 @@ body{
 .left-sidebar::-webkit-scrollbar-thumb,
 .right-sidebar::-webkit-scrollbar-thumb{
 
-    background:#c7c7c7;
+    background:var(--border);
+
     border-radius:20px;
+
+}
+
+.left-sidebar::-webkit-scrollbar-track,
+.right-sidebar::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* ==========================================
+   LARGE TABLETS
+========================================== */
+
+@media (max-width:1200px){
+
+    .home{
+
+        gap:15px;
+
+    }
+
+    .left-sidebar{
+
+        width:240px;
+
+    }
+
+    .right-sidebar{
+
+        width:280px;
+
+    }
+
+}
+
+/* ==========================================
+   TABLETS
+========================================== */
+
+@media (max-width:992px){
+
+    .home{
+
+        padding:15px;
+
+        padding-top:80px;
+
+        gap:15px;
+
+    }
+
+    .left-sidebar{
+
+        width:220px;
+
+    }
+
+    .right-sidebar{
+
+        display:none;
+
+    }
+
+    .feed{
+
+        max-width:100%;
+
+    }
+
+}
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width:768px){
+
+    .home{
+
+        display:block;
+
+        padding:10px;
+
+        padding-top:75px;
+
+    }
+
+    .left-sidebar{
+
+        display:none;
+
+    }
+
+    .right-sidebar{
+
+        display:none;
+
+    }
+
+    .feed{
+
+        width:100%;
+
+        max-width:100%;
+
+        margin:0 auto;
+
+    }
+
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width:576px){
+
+    .home{
+
+        padding:6px;
+
+        padding-top:70px;
+
+    }
+
+    .feed{
+
+        width:100%;
+
+    }
+
+}
+
+/* ==========================================
+   DARK MODE IMPROVEMENTS
+========================================== */
+
+body.dark .home{
+
+    background:var(--background);
+
+}
+
+body.dark .left-sidebar::-webkit-scrollbar-thumb,
+body.dark .right-sidebar::-webkit-scrollbar-thumb{
+
+    background:var(--border);
 
 }

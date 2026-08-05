@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Facebook</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    background:#f0f2f5;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+.wrapper{
+    width:100%;
+    padding:40px 0;
+    background:#f0f2f5;
+}
+
+.container{
+
+    width:100%;
+    max-width:600px;
+
+    margin:auto;
+
+    background:#ffffff;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.header{
+
+    background:#1877f2;
+
+    padding:25px;
+
+    text-align:center;
+
+}
+
+.header h1{
+
+    margin:0;
+
+    color:white;
+
+    font-size:34px;
+
+    letter-spacing:.5px;
+
+}
+
+.content{
+
+    padding:40px;
+
+    color:#1c1e21;
+
+}
+
+.content h2{
+
+    margin-top:0;
+
+    font-size:28px;
+
+}
+
+.content p{
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    color:#4b4f56;
+
+}
+
+.otp-box{
+
+    margin:35px auto;
+
+    width:260px;
+
+    background:#1877f2;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+
+    border-radius:12px;
+
+    font-size:42px;
+
+    font-weight:bold;
+
+    letter-spacing:10px;
+
+}
+
+.warning{
+
+    margin-top:30px;
+
+    padding:18px;
+
+    background:#fff7e6;
+
+    border-left:5px solid #f5a623;
+
+    border-radius:8px;
+
+    color:#8a6d3b;
+
+}
+
+.footer{
+
+    text-align:center;
+
+    padding:25px;
+
+    background:#fafafa;
+
+    color:#888;
+
+    font-size:14px;
+
+    border-top:1px solid #e5e5e5;
+
+}
+
+@media only screen and (max-width:600px){
+
+.content{
+
+    padding:25px;
+
+}
+
+.otp-box{
+
+    width:100%;
+
+    font-size:34px;
+
+    letter-spacing:6px;
+
+    box-sizing:border-box;
+
+}
+
+.header h1{
+
+    font-size:28px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="container">
+
+<div class="header">
+
+<h1>Facebook</h1>
+
+</div>
+
+<div class="content">
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+
+<div class="footer">
+
+© 2026 Facebook
+
+<br>
+
+This email was sent automatically.
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

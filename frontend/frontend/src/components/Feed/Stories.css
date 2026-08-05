@@ -1,29 +1,217 @@
+/* ==========================================
+   STORIES
+========================================== */
+
 .stories{
+
     display:flex;
+
     gap:12px;
+
     margin-bottom:20px;
+
     overflow-x:auto;
+
+    padding-bottom:5px;
+
+    scroll-behavior:smooth;
+
 }
 
+/* Hide Scrollbar */
+
+.stories::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+.stories{
+
+    -ms-overflow-style:none;
+
+    scrollbar-width:none;
+
+}
+
+/* ==========================================
+   STORY CARD
+========================================== */
+
 .story-card{
+
     min-width:120px;
+
+    width:120px;
+
     height:210px;
+
     border-radius:12px;
+
     background-size:cover;
+
     background-position:center;
+
     position:relative;
+
     cursor:pointer;
-    transition:.3s;
+
+    overflow:hidden;
+
+    flex-shrink:0;
+
+    transition:.25s ease;
+
 }
 
 .story-card:hover{
+
     transform:scale(1.04);
+
+}
+
+.story-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.05)
+    );
+
+}
+
+/* ==========================================
+   STORY NAME
+========================================== */
+
+.story-name{
+
+    position:absolute;
+
+    bottom:12px;
+
+    left:10px;
+
+    right:10px;
+
+    color:#ffffff;
+
+    font-weight:600;
+
+    font-size:14px;
+
+    z-index:2;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+body.dark .stories{
+
+    background:transparent;
+
+}
+
+body.dark .story-card{
+
+    box-shadow:0 2px 8px rgba(0,0,0,.4);
+
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width:768px){
+
+.story-card{
+
+    min-width:100px;
+
+    width:100px;
+
+    height:180px;
+
 }
 
 .story-name{
-    position:absolute;
-    bottom:10px;
-    left:10px;
-    color:white;
-    font-weight:bold;
+
+    font-size:13px;
+
+}
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width:576px){
+
+.stories{
+
+    gap:10px;
+
+}
+
+.story-card{
+
+    min-width:90px;
+
+    width:90px;
+
+    height:160px;
+
+}
+
+.story-name{
+
+    bottom:8px;
+
+    left:8px;
+
+    right:8px;
+
+    font-size:12px;
+
+}
+
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width:400px){
+
+.story-card{
+
+    min-width:80px;
+
+    width:80px;
+
+    height:145px;
+
+}
+
+.story-name{
+
+    font-size:11px;
+
+}
+
 }

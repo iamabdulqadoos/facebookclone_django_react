@@ -1,0 +1,92 @@
+.settings-container{
+
+width:70%;
+margin:40px auto;
+font-family:Arial;
+
+}
+
+
+.settings-container h1{
+
+font-size:32px;
+margin-bottom:25px;
+
+}
+
+
+
+.settings-card{
+
+background:white;
+padding:20px;
+border-radius:12px;
+margin-bottom:20px;
+box-shadow:0 2px 8px #ddd;
+
+}
+
+
+.settings-card h2{
+
+margin-bottom:20px;
+
+}
+
+
+
+.setting-item{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:15px 0;
+
+border-bottom:1px solid #eee;
+
+}
+
+
+
+.setting-item button{
+
+background:#1877f2;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:6px;
+cursor:pointer;
+
+}
+
+
+
+.setting-item select{
+
+padding:8px;
+border-radius:6px;
+
+}
+
+
+
+.danger button{
+
+background:#e41e3f;
+
+}
+
+
+
+.logout button{
+
+width:100%;
+background:#e41e3f;
+color:white;
+padding:12px;
+border:none;
+border-radius:8px;
+font-size:16px;
+
+}

@@ -170,3 +170,7 @@ export const unsharePost = async (postId) => {
     return response.data;
 
 };
+export const getPostById = async (postId) => {
+    const response = await api.get(`/posts/${postId}/`);
+    return response.data;
+};

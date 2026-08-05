@@ -1,0 +1,62 @@
+{% extends "emails/base_email.html" %}
+
+{% block content %}
+
+<h2>Verify your email</h2>
+
+<p>
+
+Hello,
+
+</p>
+
+<p>
+
+Welcome to <strong>Facebook</strong>.
+
+</p>
+
+<p>
+
+Thank you for creating your account.
+
+Please use the verification code below to activate your account.
+
+</p>
+
+<div class="otp-box">
+
+{{ otp }}
+
+</div>
+
+<p>
+
+This verification code is valid for
+<strong>10 minutes</strong>.
+
+</p>
+
+<div class="warning">
+
+<strong>Security Tip</strong>
+
+<br><br>
+
+Never share this verification code with anyone.<br>
+
+Facebook will never ask for your OTP.
+
+</div>
+
+<p style="margin-top:35px;">
+
+Regards,
+
+<br>
+
+<strong>Facebook Team</strong>
+
+</p>
+
+{% endblock %}
