@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { getProfile } from "../../services/profileService";
 import { useNotification } from "../../context/NotificationContext";
+import { useTheme } from "../../context/ThemeContext";
 import {
     FaFacebook,
     FaHome,
@@ -21,6 +22,11 @@ import {
 export default function Navbar() {
     const navigate = useNavigate();
     const { notificationCount } = useNotification();
+
+    const {
+        darkMode,
+        toggleTheme,
+    } = useTheme();
 
     const [profile, setProfile] = useState(null);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -195,10 +201,27 @@ export default function Navbar() {
                             </Link>
                             <button
                                 className="dropdown-item"
-                                onClick={() => setMenuOpen(false)}
-                            >
+                                onClick={() => {
+
+                                    toggleTheme();
+
+                                    setMenuOpen(false);
+
+                                }}
+                                >
+
                                 <FaMoon />
-                                <span>Dark Mode</span>
+
+                                <span>
+
+                                {
+                                    darkMode
+                                    ? "Light Mode"
+                                    : "Dark Mode"
+                                }
+
+                                </span>
+
                             </button>
                             <hr />
                             <button

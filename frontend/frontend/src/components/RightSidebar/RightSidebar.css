@@ -1,50 +1,226 @@
+/* ==========================================
+   RIGHT SIDEBAR
+========================================== */
+
 .right-sidebar{
+
     width:25%;
+
     position:sticky;
+
     top:80px;
+
     height:fit-content;
+
 }
+
+/* ==========================================
+   CARDS
+========================================== */
 
 .birthday-card,
 .sponsored-card,
 .contacts-card{
-    background:#fff;
+
+    background:var(--surface);
+
+    color:var(--text);
+
     border-radius:12px;
+
     padding:15px;
+
     margin-bottom:20px;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+    box-shadow:var(--shadow);
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        box-shadow .25s ease;
+
 }
+
+.birthday-card:hover,
+.sponsored-card:hover,
+.contacts-card:hover{
+
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+}
+
+.birthday-card h3,
+.sponsored-card h3,
+.contacts-card h3{
+
+    color:var(--text);
+
+    margin-bottom:12px;
+
+}
+
+/* ==========================================
+   SPONSORED
+========================================== */
 
 .sponsored-card img{
+
     width:100%;
+
     border-radius:10px;
+
     margin:10px 0;
+
+    object-fit:cover;
+
 }
+/* ==========================================
+   CONTACTS
+========================================== */
 
 .contact{
+
     display:flex;
+
     align-items:center;
+
     gap:12px;
-    padding:10px 0;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+}
+
+.contact:hover{
+
+    background:var(--surface-hover);
+
 }
 
 .contact-image{
+
     position:relative;
+
 }
 
 .contact img{
+
     width:40px;
+
     height:40px;
+
     border-radius:50%;
+
+    object-fit:cover;
+
 }
 
 .online{
+
     position:absolute;
+
     bottom:2px;
+
     right:2px;
+
     width:10px;
+
     height:10px;
+
     background:#31a24c;
-    border:2px solid white;
+
+    border:2px solid var(--surface);
+
     border-radius:50%;
+
+}
+
+.contact span{
+
+    color:var(--text);
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:1200px){
+
+    .right-sidebar{
+
+        width:28%;
+
+    }
+
+}
+
+@media (max-width:992px){
+
+    .right-sidebar{
+
+        display:none;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .right-sidebar{
+
+        display:none;
+
+    }
+
+}
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+body.dark .birthday-card,
+body.dark .sponsored-card,
+body.dark .contacts-card{
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    box-shadow:0 6px 18px rgba(0,0,0,.45);
+
+}
+
+body.dark .birthday-card:hover,
+body.dark .sponsored-card:hover,
+body.dark .contacts-card:hover{
+
+    box-shadow:0 10px 25px rgba(0,0,0,.60);
+
+}
+
+body.dark .contact:hover{
+
+    background:var(--surface-hover);
+
+}
+
+body.dark .online{
+
+    border-color:var(--surface);
+
+}
+
+body.dark .contact span{
+
+    color:var(--text);
+
 }

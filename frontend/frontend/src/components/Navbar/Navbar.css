@@ -12,7 +12,7 @@
 
     height:60px;
 
-    background:#ffffff;
+    background:var(--surface);
 
     display:flex;
 
@@ -22,7 +22,12 @@
 
     padding:0 16px;
 
-    box-shadow:0 1px 3px rgba(0,0,0,.12);
+    box-shadow:var(--shadow);
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        box-shadow .25s ease;
 
     z-index:9999;
 
@@ -54,7 +59,7 @@
 
     border-radius:50%;
 
-    background:#1877f2;
+    background:var(--primary);
 
     color:#ffffff;
 
@@ -88,7 +93,7 @@
 
     height:40px;
 
-    background:#f0f2f5;
+    background:var(--surface-hover);
 
     border-radius:50px;
 
@@ -104,7 +109,7 @@
 
 .search-icon{
 
-    color:#65676b;
+    color:var(--text-secondary);
 
     font-size:15px;
 
@@ -120,15 +125,18 @@
 
     background:transparent;
 
+    color:var(--text);
+
     font-size:15px;
 
 }
 
 .search-box input::placeholder{
 
-    color:#65676b;
+    color:var(--text-secondary);
 
 }
+
 /* ==========================================
    CENTER
 ========================================== */
@@ -161,7 +169,7 @@
 
     justify-content:center;
 
-    color:#65676b;
+    color:var(--text-secondary);
 
     text-decoration:none;
 
@@ -177,7 +185,7 @@
 
 .nav-item:hover{
 
-    background:#f0f2f5;
+    background:var(--surface-hover);
 
 }
 
@@ -185,7 +193,7 @@
 
 .active-nav{
 
-    color:#1877f2;
+    color:var(--primary);
 
 }
 
@@ -203,12 +211,11 @@
 
     height:3px;
 
-    background:#1877f2;
+    background:var(--primary);
 
     border-radius:20px;
 
 }
-
 
 /* ==========================================
    RIGHT
@@ -236,7 +243,7 @@
 
     border:none;
 
-    background:#e4e6eb;
+    background:var(--surface-hover);
 
     display:flex;
 
@@ -244,7 +251,7 @@
 
     justify-content:center;
 
-    color:#050505;
+    color:var(--text);
 
     font-size:20px;
 
@@ -260,12 +267,11 @@
 
 .circle-btn:hover{
 
-    background:#d8dadf;
+    background:var(--border);
 
     transform:scale(1.05);
 
 }
-
 
 /* ==========================================
    BADGES
@@ -287,7 +293,7 @@
 
     border-radius:50px;
 
-    background:#e41e3f;
+    background:var(--danger);
 
     color:#ffffff;
 
@@ -301,7 +307,7 @@
 
     font-weight:bold;
 
-    border:2px solid #ffffff;
+    border:2px solid var(--surface);
 
 }
 /* ==========================================
@@ -338,7 +344,7 @@
 
 .profile-btn:hover{
 
-    background:#f0f2f5;
+    background:var(--surface-hover);
 
 }
 
@@ -352,7 +358,7 @@
 
     object-fit:cover;
 
-    border:2px solid #e4e6eb;
+    border:2px solid var(--border);
 
 }
 
@@ -364,7 +370,7 @@
 
     border-radius:50%;
 
-    background:#1877f2;
+    background:var(--primary);
 
     color:#ffffff;
 
@@ -386,7 +392,7 @@
 
     font-weight:600;
 
-    color:#050505;
+    color:var(--text);
 
 }
 
@@ -394,10 +400,9 @@
 
     font-size:12px;
 
-    color:#65676b;
+    color:var(--text-secondary);
 
 }
-
 
 /* ==========================================
    DROPDOWN
@@ -413,7 +418,7 @@
 
     width:280px;
 
-    background:#ffffff;
+    background:var(--surface);
 
     border-radius:12px;
 
@@ -424,6 +429,10 @@
     animation:dropdown .2s ease;
 
     z-index:10000;
+
+    transition:
+        background .25s ease,
+        color .25s ease;
 
 }
 
@@ -461,7 +470,7 @@
 
     text-decoration:none;
 
-    color:#050505;
+    color:var(--text);
 
     font-size:15px;
 
@@ -477,13 +486,33 @@
 
 .dropdown-item:hover{
 
-    background:#f0f2f5;
+    background:var(--surface-hover);
 
 }
 
-.logout-btn{
+.dropdown-item svg{
 
-    color:#d93025;
+    color:var(--text-secondary);
+
+    font-size:18px;
+
+}
+
+.dropdown-item span{
+
+    color:var(--text);
+
+}
+
+.logout{
+
+    color:var(--danger);
+
+}
+
+.logout svg{
+
+    color:var(--danger);
 
 }
 
@@ -491,13 +520,11 @@
 
     border:none;
 
-    border-top:1px solid #e4e6eb;
+    border-top:1px solid var(--border);
 
     margin:5px 0;
 
 }
-
-
 /* ==========================================
    RESPONSIVE
 ========================================== */
@@ -572,6 +599,12 @@
 
     }
 
+    .dropdown{
+
+        right:-10px;
+
+    }
+
 }
 
 @media (max-width:576px){
@@ -588,10 +621,68 @@
 
     }
 
+    .navbar-right{
+
+        gap:8px;
+
+    }
+
     .dropdown{
 
         width:240px;
 
     }
+
+}
+
+/* ==========================================
+   DARK MODE IMPROVEMENTS
+========================================== */
+
+body.dark .facebook-logo{
+
+    box-shadow:0 0 12px rgba(45,136,255,.35);
+
+}
+
+body.dark .badge{
+
+    border-color:var(--surface);
+
+}
+
+body.dark .dropdown{
+
+    box-shadow:0 10px 30px rgba(0,0,0,.55);
+
+}
+
+body.dark .profile-image{
+
+    border-color:var(--border);
+
+}
+
+body.dark .search-box input{
+
+    color:var(--text);
+
+}
+
+body.dark .search-box input::placeholder{
+
+    color:var(--text-secondary);
+
+}
+
+body.dark .circle-btn:hover{
+
+    background:var(--border);
+
+}
+
+body.dark .dropdown-item:hover{
+
+    background:var(--surface-hover);
 
 }

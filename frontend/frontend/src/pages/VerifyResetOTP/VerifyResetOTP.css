@@ -115,3 +115,191 @@ body{
         font-size:22px;
     }
 }
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 768px) {
+
+    .verify-page{
+
+        padding:20px;
+
+    }
+
+    .verify-card{
+
+        width:100%;
+        max-width:420px;
+
+        padding:30px 25px;
+
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .verify-card{
+
+        padding:25px 20px;
+
+    }
+
+    .verify-logo{
+
+        font-size:42px;
+
+    }
+
+    .verify-card h2{
+
+        font-size:24px;
+
+    }
+
+    .verify-card p{
+
+        font-size:15px;
+
+    }
+
+    .verify-card input{
+
+        padding:13px;
+
+        font-size:15px;
+
+    }
+
+    .verify-btn{
+
+        padding:13px;
+
+        font-size:16px;
+
+    }
+
+    .otp-container{
+
+        gap:8px;
+
+    }
+
+    .otp-input{
+
+        width:48px;
+
+        height:55px;
+
+        font-size:22px;
+
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .verify-page{
+
+        padding:15px;
+
+    }
+
+    .verify-card{
+
+        padding:20px 15px;
+
+        border-radius:8px;
+
+    }
+
+    .verify-logo{
+
+        font-size:36px;
+
+    }
+
+    .verify-card h2{
+
+        font-size:22px;
+
+    }
+
+    .verify-card p{
+
+        font-size:14px;
+
+        margin-bottom:20px;
+
+    }
+
+    .otp-container{
+
+        gap:6px;
+
+    }
+
+    .otp-input{
+
+        width:42px;
+
+        height:50px;
+
+        font-size:20px;
+
+    }
+
+}
+
+@media (max-width: 360px) {
+
+    .verify-card{
+
+        padding:18px 12px;
+
+    }
+
+    .verify-logo{
+
+        font-size:32px;
+
+    }
+
+    .verify-card h2{
+
+        font-size:20px;
+
+    }
+
+    .verify-card p{
+
+        font-size:13px;
+
+    }
+
+    .otp-container{
+
+        gap:5px;
+
+    }
+
+    .otp-input{
+
+        width:38px;
+
+        height:46px;
+
+        font-size:18px;
+
+    }
+
+    .verify-btn{
+
+        font-size:15px;
+
+        padding:12px;
+
+    }
+
+}

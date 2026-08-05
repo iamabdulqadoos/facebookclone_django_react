@@ -56,3 +56,117 @@
     margin-bottom: 15px;
     font-weight: 500;
 }
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:768px){
+
+    .register-page{
+
+        padding:20px;
+
+    }
+
+    .register-card{
+
+        width:100%;
+        max-width:420px;
+
+        padding:25px;
+
+    }
+
+}
+
+@media (max-width:576px){
+
+    .register-page{
+
+        padding:15px;
+
+    }
+
+    .register-card{
+
+        width:100%;
+
+        padding:20px;
+
+        border-radius:10px;
+
+    }
+
+    .register-card h1{
+
+        font-size:28px;
+
+    }
+
+    .register-card input{
+
+        padding:14px;
+
+        font-size:15px;
+
+    }
+
+    .register-card button{
+
+        padding:14px;
+
+        font-size:16px;
+
+    }
+
+}
+
+@media (max-width:400px){
+
+    .register-page{
+
+        padding:10px;
+
+    }
+
+    .register-card{
+
+        padding:18px;
+
+    }
+
+    .register-card h1{
+
+        font-size:24px;
+
+    }
+
+    .register-card input{
+
+        padding:12px;
+
+        font-size:14px;
+
+    }
+
+    .register-card button{
+
+        padding:12px;
+
+        font-size:15px;
+
+    }
+
+    .field-error{
+
+        font-size:12px;
+
+    }
+
+    .success-message{
+
+        font-size:14px;
+
+    }
+
+}

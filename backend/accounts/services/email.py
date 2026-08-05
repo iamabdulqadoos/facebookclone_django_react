@@ -2,7 +2,12 @@ import random
 import threading
 
 from django.conf import settings
-from django.core.mail import send_mail
+
+from django.core.mail import EmailMultiAlternatives
+
+from django.template.loader import render_to_string
+
+from django.utils.html import strip_tags
 
 
 def generate_otp():
@@ -12,57 +17,60 @@ def generate_otp():
 def send_otp_email(
     email,
     otp,
-    subject="Facebook Clone - Email Verification",
+    subject="Facebook - Email Verification",
     purpose="verification",
 ):
+
     if purpose == "reset_password":
-        message = f"""
-Hello,
 
-We received a request to reset your Facebook Clone account password.
-
-Your Password Reset OTP is:
-
-{otp}
-
-This code is valid for 10 minutes.
-
-If you did not request a password reset, please ignore this email.
-"""
+        template = "emails/reset_password_email.html"
 
     else:
-        message = f"""
-Hello,
 
-Welcome to Facebook Clone!
+        template = "emails/verification_email.html"
 
-Your verification code is:
+    context = {
+        "otp": otp,
+    }
 
-{otp}
-
-This code is valid for 10 minutes.
-
-If you did not create this account, please ignore this email.
-"""
-
-    send_mail(
-        subject,
-        message,
-        settings.DEFAULT_FROM_EMAIL,
-        [email],
-        fail_silently=False,
+    html_message = render_to_string(
+        template,
+        context,
     )
+
+    plain_message = strip_tags(html_message)
+
+    email_message = EmailMultiAlternatives(
+        subject=subject,
+        body=plain_message,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[email],
+    )
+
+    email_message.attach_alternative(
+        html_message,
+        "text/html",
+    )
+
+    email_message.send()
 
 
 def send_otp_email_async(
     email,
     otp,
-    subject="Facebook Clone - Email Verification",
+    subject="Facebook - Email Verification",
     purpose="verification",
 ):
+
     thread = threading.Thread(
         target=send_otp_email,
-        args=(email, otp, subject, purpose),
+        args=(
+            email,
+            otp,
+            subject,
+            purpose,
+        ),
         daemon=True,
     )
+
     thread.start()

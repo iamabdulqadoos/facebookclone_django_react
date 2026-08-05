@@ -6,6 +6,7 @@ import App from "./App";
 
 import "./index.css";
 
+import { ThemeProvider } from "./context/ThemeContext";
 import { NotificationProvider } from "./context/NotificationContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -13,11 +14,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
         <BrowserRouter>
 
-            <NotificationProvider>
+            <ThemeProvider>
 
-                <App />
+                <NotificationProvider>
 
-            </NotificationProvider>
+                    <App />
+
+                </NotificationProvider>
+
+            </ThemeProvider>
 
         </BrowserRouter>
 

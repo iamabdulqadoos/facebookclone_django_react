@@ -1,19 +1,105 @@
+/* ==========================================
+   RESET
+========================================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+/* ==========================================
+   LIGHT THEME
+========================================== */
+
+:root{
+
+    --background:#f0f2f5;
+
+    --surface:#ffffff;
+
+    --surface-hover:#f0f2f5;
+
+    --text:#050505;
+
+    --text-secondary:#65676b;
+
+    --border:#d8dadf;
+
+    --shadow:0 1px 3px rgba(0,0,0,.12);
+
+    --primary:#1877f2;
+
+    --danger:#e41e3f;
+
+}
+
+/* ==========================================
+   DARK THEME
+========================================== */
+
+body.dark{
+
+    --background:#18191a;
+
+    --surface:#242526;
+
+    --surface-hover:#3a3b3c;
+
+    --text:#e4e6eb;
+
+    --text-secondary:#b0b3b8;
+
+    --border:#3e4042;
+
+    --shadow:0 1px 6px rgba(0,0,0,.45);
+
+    --primary:#2d88ff;
+
+    --danger:#ff4d6d;
+
+}
+
+/* ==========================================
+   GLOBAL
+========================================== */
+
 body{
+
     margin:0;
+
     font-family:Arial, Helvetica, sans-serif;
-    background:#f0f2f5;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    transition:
+        background .25s ease,
+        color .25s ease;
+
 }
 
 a{
+
     text-decoration:none;
+
+    color:inherit;
+
 }
 
 button{
+
     cursor:pointer;
+
+    font-family:inherit;
+
+}
+
+input,
+textarea,
+select{
+
+    font-family:inherit;
+
 }
