@@ -1,60 +1,103 @@
 import "./Sidebar.css";
 
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+import { getProfile } from "../../services/profileService";
+
 import {
-  FaUserFriends,
-  FaUsers,
-  FaBookmark,
-  FaChevronDown,
+    FaUserFriends,
+    FaUsers,
+    FaBookmark,
+    FaChevronDown,
 } from "react-icons/fa";
 
 import { MdOutlineOndemandVideo } from "react-icons/md";
 import { BsClockHistory } from "react-icons/bs";
 
 function Sidebar() {
-  return (
-    <div className="sidebar">
 
-      <div className="sidebar-item">
-        <img
-          src="https://i.pravatar.cc/40"
-          alt="profile"
-          className="profile-img"
-        />
-        <span>Abdul Qadoos</span>
-      </div>
+    const [profile, setProfile] = useState(null);
 
-      <div className="sidebar-item">
-        <FaUserFriends />
-        <span>Friends</span>
-      </div>
+    useEffect(() => {
+        loadProfile();
+    }, []);
 
-      <div className="sidebar-item">
-        <FaUsers />
-        <span>Groups</span>
-      </div>
+    const loadProfile = async () => {
+        try {
+            const data = await getProfile();
+            setProfile(data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
-      <div className="sidebar-item">
-        <MdOutlineOndemandVideo />
-        <span>Watch</span>
-      </div>
+    const profileImage = profile?.profile_picture
+        ? profile.profile_picture.startsWith("http")
+            ? profile.profile_picture
+            : `http://127.0.0.1:8000${profile.profile_picture}`
+        : "http://127.0.0.1:8000/media/default/default_profile.png";
 
-      <div className="sidebar-item">
-        <FaBookmark />
-        <span>Saved</span>
-      </div>
+    const fullName =
+        `${profile?.first_name || ""} ${profile?.last_name || ""}`.trim() ||
+        profile?.username ||
+        "User";
 
-      <div className="sidebar-item">
-        <BsClockHistory />
-        <span>Memories</span>
-      </div>
+    return (
+        <div className="sidebar">
 
-      <div className="sidebar-item">
-        <FaChevronDown />
-        <span>See More</span>
-      </div>
+            {/* Profile */}
+            <Link
+                to="/profile"
+                className="sidebar-item profile-sidebar-item"
+            >
+                <img
+                    src={profileImage}
+                    alt="Profile"
+                    className="profile-img"
+                />
 
-    </div>
-  );
+                <span>{fullName}</span>
+            </Link>
+
+            {/* Friends */}
+            <div className="sidebar-item">
+                <FaUserFriends />
+                <span>Friends</span>
+            </div>
+
+            {/* Groups */}
+            <div className="sidebar-item">
+                <FaUsers />
+                <span>Groups</span>
+            </div>
+
+            {/* Watch */}
+            <div className="sidebar-item">
+                <MdOutlineOndemandVideo />
+                <span>Watch</span>
+            </div>
+
+            {/* Saved */}
+            <div className="sidebar-item">
+                <FaBookmark />
+                <span>Saved</span>
+            </div>
+
+            {/* Memories */}
+            <div className="sidebar-item">
+                <BsClockHistory />
+                <span>Memories</span>
+            </div>
+
+            {/* See More */}
+            <div className="sidebar-item">
+                <FaChevronDown />
+                <span>See More</span>
+            </div>
+
+        </div>
+    );
 }
 
 export default Sidebar;

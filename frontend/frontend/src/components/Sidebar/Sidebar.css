@@ -1,27 +1,135 @@
+/* ==========================================
+   SIDEBAR
+========================================== */
+
 .sidebar{
     width:25%;
+    margin-left:-40px;
+    transition:0.3s ease;
 }
+
+/* ==========================================
+   SIDEBAR ITEM
+========================================== */
 
 .sidebar-item{
     display:flex;
     align-items:center;
     gap:15px;
-    padding:12px;
+    padding:12px 8px;
     border-radius:10px;
     cursor:pointer;
+    text-decoration:none;
+    color:var(--text);
+    transition:all .25s ease;
 }
 
 .sidebar-item:hover{
-    background:#e4e6eb;
+    background:var(--surface-hover);
+    transform:translateX(4px);
 }
+
+/* ==========================================
+   PROFILE IMAGE
+========================================== */
 
 .profile-img{
     width:40px;
     height:40px;
     border-radius:50%;
+    object-fit:cover;
+    border:2px solid var(--border);
 }
 
+/* ==========================================
+   TEXT
+========================================== */
+
+.sidebar-item span{
+    font-size:15px;
+    font-weight:600;
+    color:var(--text);
+}
+
+/* ==========================================
+   ICONS
+========================================== */
+
 .sidebar svg{
-    color:#1877f2;
+    color:var(--primary);
     font-size:22px;
+    min-width:22px;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:1200px){
+
+    .sidebar{
+        width:28%;
+        margin-left:-20px;
+    }
+
+}
+
+@media (max-width:992px){
+
+    .sidebar{
+        width:30%;
+        margin-left:-10px;
+    }
+
+    .sidebar-item{
+        gap:12px;
+        padding:10px 8px;
+    }
+
+    .sidebar-item span{
+        font-size:14px;
+    }
+
+    .sidebar svg{
+        font-size:20px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    /* Sidebar hidden because mobile uses hamburger menu */
+
+    .sidebar{
+        display:none;
+    }
+
+}
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+body.dark .sidebar{
+    background:transparent;
+}
+
+body.dark .sidebar-item{
+    color:var(--text);
+}
+
+body.dark .sidebar-item:hover{
+    background:var(--surface-hover);
+}
+
+body.dark .sidebar-item span{
+    color:var(--text);
+}
+
+body.dark .profile-img{
+    border-color:var(--border);
+}
+
+body.dark .sidebar svg{
+    color:var(--primary);
 }
