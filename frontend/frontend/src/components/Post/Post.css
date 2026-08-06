@@ -129,35 +129,13 @@
 
 }
 
-<<<<<<< HEAD
 .post-image {
     width: 100%;
-    max-height: 650px;
-    object-fit: contain;
+    height: auto;
     display: block;
-=======
-
-/* ==========================================
-   STATISTICS
-========================================== */
-
-.post-stats{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:12px 15px;
-
-    color:var(--text-secondary);
-
-    font-size:14px;
-
->>>>>>> temp-save
+    object-fit: cover;
+    background: transparent;
 }
-
 .likes-count{
 
     font-weight:600;
@@ -451,5 +429,56 @@ body.dark .action-btn:hover{
 body.dark .comment-section{
 
     background:var(--background);
+
+}
+/* ==========================================
+   STATISTICS
+========================================== */
+
+.post-stats{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:10px 15px;
+
+    font-size:14px;
+
+    color:var(--text-secondary);
+
+}
+
+.likes-count{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+.post-meta{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    color:var(--text-secondary);
+
+}
+
+.post-meta span{
+
+    white-space:nowrap;
 
 }

@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 
 import EditProfile from "./EditProfile";
 import coverPlaceholder from "../../assets/cover-placeholder.png";
-import avatarPlaceholder from "../../assets/avatar-placeholder.png";
+import avatarPlaceholder from "../../assets/avatar-placeholder.jpg";
 import {
     getProfile,
     uploadProfilePicture,

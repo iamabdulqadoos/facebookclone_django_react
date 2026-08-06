@@ -138,6 +138,7 @@ export default function Post({ post, onLike }) {
                     />
                 )}
             </div>
+            
 
             {/* ========================= */}
             {/* Share Modal */}
