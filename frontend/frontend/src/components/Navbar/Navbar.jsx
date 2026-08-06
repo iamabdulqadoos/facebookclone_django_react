@@ -164,9 +164,15 @@ export default function Navbar() {
                     >
                         {profile?.profile_picture ? (
                             <img
-                                src={profile.profile_picture}
-                                alt="Profile"
-                                className="profile-image"
+                                src={
+                                    profile?.profile_picture
+                                    ? profile.profile_picture.startsWith("http")
+                                    ? profile.profile_picture
+                                    : `http://127.0.0.1:8000${profile.profile_picture}`
+                                    : "http://127.0.0.1:8000/media/default/default_profile.png"
+                                }
+                                    alt="Profile"
+                                    className="profile-image"
                             />
                         ) : (
                             <div className="profile-placeholder">
