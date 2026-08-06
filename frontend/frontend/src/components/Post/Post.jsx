@@ -1,10 +1,11 @@
 import "./Post.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import CommentSection from "../Comments/CommentSection";
 import ShareModal from "../ShareModal/ShareModal";
 
 export default function Post({ post, onLike }) {
+
     const [commentsCount, setCommentsCount] = useState(
         post.comments_count || 0
     );
@@ -13,14 +14,48 @@ export default function Post({ post, onLike }) {
 
     const [showShareModal, setShowShareModal] = useState(false);
 
+    const [showHeart, setShowHeart] = useState(false);
+
+    const lastTap = useRef(0);
+
+    const handleDoubleLike = () => {
+
+    onLike(post.id);
+
+    if (!post.is_liked) {
+
+        setShowHeart(true);
+
+        setTimeout(() => {
+            setShowHeart(false);
+        }, 900);
+
+    }
+
+};
+
+    const handleTouch = () => {
+
+        const now = Date.now();
+
+        if (now - lastTap.current < 300) {
+
+            handleDoubleLike();
+
+        }
+
+        lastTap.current = now;
+
+    };
+
     return (
         <>
             <div className="post">
-                {/* ========================= */}
+
                 {/* Header */}
-                {/* ========================= */}
 
                 <div className="post-header">
+
                     {post.profile_picture ? (
                         <img
                             src={post.profile_picture}
@@ -33,63 +68,79 @@ export default function Post({ post, onLike }) {
                         </div>
                     )}
 
-                    <div>
+                    <div className="post-user">
                         <h4>{post.username}</h4>
 
                         <small>
-                            {new Date(post.created_at).toLocaleString()}
+                        {new Date(post.created_at).toLocaleString()}
                         </small>
                     </div>
+
                 </div>
 
-                {/* ========================= */}
                 {/* Content */}
-                {/* ========================= */}
 
                 {post.content && (
+
                     <div className="post-content">
                         <p>{post.content}</p>
                     </div>
+
                 )}
 
-                {/* ========================= */}
                 {/* Image */}
-                {/* ========================= */}
 
                 {post.image && (
-                    <img
-                        src={post.image}
-                        alt="Post"
-                        className="post-image"
-                    />
+
+                    <div
+                        className="post-image-container"
+                        onDoubleClick={handleDoubleLike}
+                        onTouchEnd={handleTouch}
+                    >
+
+                        <img
+                            src={post.image}
+                            alt="Post"
+                            className="post-image"
+                        />
+
+                        {showHeart && (
+                            <div className="heart-animation">
+                                ❤️
+                            </div>
+                        )}
+
+                    </div>
+
                 )}
 
-                {/* ========================= */}
                 {/* Statistics */}
-                {/* ========================= */}
 
                 <div className="post-stats">
+
                     <div className="likes-count">
                         ❤️ {post.likes_count}
                     </div>
 
                     <div className="post-meta">
-                        <span>{commentsCount} Comments</span>
+
+                        <span>
+                            {commentsCount} Comments
+                        </span>
 
                         <span>
                             {post.share_count || 0} Shares
                         </span>
+
                     </div>
+
                 </div>
 
                 <hr />
 
-                {/* ========================= */}
-                {/* Facebook Action Buttons */}
-                {/* ========================= */}
+                {/* Action Buttons */}
 
                 <div className="post-actions">
-                    {/* Like */}
 
                     <button
                         className={
@@ -102,8 +153,6 @@ export default function Post({ post, onLike }) {
                         👍 Like
                     </button>
 
-                    {/* Comment */}
-
                     <button
                         className="action-btn"
                         onClick={() =>
@@ -113,8 +162,6 @@ export default function Post({ post, onLike }) {
                         💬 Comment
                     </button>
 
-                    {/* Share */}
-
                     <button
                         className="action-btn"
                         onClick={() =>
@@ -123,35 +170,36 @@ export default function Post({ post, onLike }) {
                     >
                         ↗️ Share
                     </button>
+
                 </div>
 
-                {/* ========================= */}
                 {/* Comments */}
-                {/* ========================= */}
 
                 {showComments && (
+
                     <CommentSection
                         postId={post.id}
-                        setCommentsCount={
-                            setCommentsCount
-                        }
+                        setCommentsCount={setCommentsCount}
                     />
-                )}
-            </div>
-            
 
-            {/* ========================= */}
+                )}
+
+            </div>
+
             {/* Share Modal */}
-            {/* ========================= */}
 
             {showShareModal && (
+
                 <ShareModal
                     postId={post.id}
                     onClose={() =>
                         setShowShareModal(false)
                     }
                 />
+
             )}
+
         </>
     );
+
 }
